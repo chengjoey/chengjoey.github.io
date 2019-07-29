@@ -1,20 +1,43 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely need to edit after that.
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'jekyll serve'. If you change this file, please restart the server process.
-
-# Site settings
-title: Joey Cheng
+title: Joey Blog
+author: chengjoey
 email: zchengjoey@gmail.com
-description:  Write an awesome description for your new site here. You can edit this
-              line in _config.yml. It will appear in your document head meta (for
-              Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://www.zchengjoey.com" # the base hostname & protocol for your site
-twitter_username: joeycheng
-github_username:  chengjoey
+description: > # this means to ignore newlines until "show_exerpts:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+show_excerpts: true # set to true to show excerpts on the homepage
+theme: texture
+
+# Minima date format
+# refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
+sass:
+  sass_dir: _sass
+
+permalink: /posts/:title/
+texture:
+  title: JoeyCheng
+  tagline: Developer
+  date_format: "%b %-d, %Y"
+  style: black
+  showNav: false
+  showPicker: false
+
+  # generate social links in footer
+  social_links:
+    twitter: joeycheng
+    github:  chengjoey
+    linkedIn: joeycheng
+    rss: rss
+ 
+
+# If you want to link only specific pages in your header, uncomment
+# this and add the path to the pages in order as they should show up
+#header_pages:
+# - about.md
 
 # Build settings
-markdown: kramdown
+# theme: texture
+
+plugins:
+  - jekyll-seo-tag
+#  - jekyll-feed
