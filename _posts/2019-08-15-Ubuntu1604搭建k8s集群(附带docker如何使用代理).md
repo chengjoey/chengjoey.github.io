@@ -255,6 +255,15 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 使用kubectl查看节点信息, 可以看到主节点初始化完毕, kubectl get nodes:
 ![查看所有节点](/images/k8s-getnodes-1.png)
 
+## 安装网络插件 Canal
+在上面安装完成后会看到这样一段话:"You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/"
+提示我们需要安装网络插件了, [官方文档](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#installing-a-pod-network)里有很多种可以选择,
+安装 Canal:
+```
+kubectl apply -f https://docs.projectcalico.org/v3.8/manifests/canal.yaml
+```
 ## Slave节点加入集群
 执行如下命令, 将slave节点加入集群:
 ```
@@ -280,7 +289,7 @@ This node has joined the cluster:
 
 Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
 ```
-等节点加入完毕, 在节点查看:
+等节点加入完毕, 在主节点查看:
 
 ![查看所有节点](/images/k8s-getnodes-2.png)
 
