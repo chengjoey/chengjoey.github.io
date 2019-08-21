@@ -6,7 +6,7 @@
 $linkColor: #999;
 $mobileW: 768px;
 $smallMobileW: 480px;
-$bigScreenW: 1600px;
+$bigScreenW: 1280px;
 $leftWidth: 220px;
 
 $gray: #999;
@@ -97,7 +97,7 @@ header {
 //
 .container {
 	margin:0 150px;
-	max-width: 720px;
+	max-width: 1080px;
 
 	div.highlighter-rouge {
 		right: 150px;

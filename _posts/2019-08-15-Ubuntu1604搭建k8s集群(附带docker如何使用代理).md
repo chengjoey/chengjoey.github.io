@@ -154,6 +154,7 @@ sudo systemctl daemon-reload
 sudo systemctl restart docker
 ```
 docker info | grep -i proxy 可以看到docker 使用代理的信息:
+
 ![docker info](/images/docker-info.jpg)
 
 ## 使用kubeadmin初始化master节点
@@ -253,6 +254,7 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 使用kubectl查看节点信息, 可以看到主节点初始化完毕, kubectl get nodes:
+
 ![查看所有节点](/images/k8s-getnodes-1.png)
 
 ## 安装网络插件 Canal
@@ -298,3 +300,14 @@ kubectl get pod -n kube-system -o wide:
 ![查看pods](/images/k8s-getpods-1.jpg)
 
 整个k8s集群已经搭建成功, 如有疑问点击主页的github给我留言
+
+## 遇到的问题记录
+- couldn't validate the identity of the API Server: abort connecting to API servers after timeout of 5m0s
+
+![kubeadm join miss config.yaml](/images/error1.jpg)
+
+![kubeadm join 卡住](/images/error2.jpg)
+解决方法是在主节点创建token时, 命令改为:
+```
+kubeadm token create --print-join-command
+```
