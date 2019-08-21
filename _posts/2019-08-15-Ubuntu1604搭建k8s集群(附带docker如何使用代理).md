@@ -311,3 +311,11 @@ kubectl get pod -n kube-system -o wide:
 ```
 kubeadm token create --print-join-command
 ```
+
+## 常用命令
+- 列出具有磁盘压力的节点, pod被驱逐或者无法执行任务可能是因为磁盘压力太大, 默认不能超过85%的使用率
+![被驱逐pod](/images/be-ecvited.jpg)
+![磁盘使用率](/images/disk-pressure.jpg)
+```
+kubectl get no -ojson | jq -r '.items[] | select(.status.conditions[] | select(.status == "True") | select(.type == "DiskPressure")) | .metadata.name'
+```
